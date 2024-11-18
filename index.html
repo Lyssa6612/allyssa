@@ -1,23 +1,96 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Quiz moo<</title>
-	<link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Children's Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .quiz-container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .question {
+            margin: 15px 0;
+        }
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            display: block;
+            width: 100%;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-<h1>Quiz moo</h1>
-    <div id="quiz-container">
-        <div class="question" id="question"></div>
-        <input type="text" id="answer" placeholder="Type your answer here">
-        <button id="submit">Submit</button>
-        <div class="message" id="message"></div>
-    </div>
-    <div id="result" style="display:none;">
-        <h2>Your Score: <span id="score"></span></h2>
-    </div>
 
-<script src="script.js"></script>
+<div class="quiz-container">
+    <h1>Children's Quiz</h1>
+    <div class="question" id="question1">
+        <label>1. What is the color of the sky on a clear day?</label><br>
+        <input type="text" id="answer1">
+    </div>
+    <div class="question" id="question2">
+        <label>2. How many legs does a spider have?</label><br>
+        <input type="text" id="answer2">
+    </div>
+    <div class="question" id="question3">
+        <label>3. What is the name of the fairy tale character who lost her glass slipper?</label><br>
+        <input type="text" id="answer3">
+    </div>
+    <div class="question" id="question4">
+        <label>4. What animal is known as "man's best friend"?</label><br>
+        <input type="text" id="answer4">
+    </div>
+    <div class="question" id="question5">
+        <label>5. What do you call the place where you go to borrow books?</label><br>
+        <input type="text" id="answer5">
+    </div>
+    <button class="submit-btn" onclick="checkAnswers()">Submit Answers</button>
+    <div id="result" style="margin-top: 20px; text-align: center;"></div>
+</div>
+
+<script>
+    function checkAnswers() {
+        const answers = [
+            "blue", 
+            "8", 
+            "Cinderella", 
+            "dog", 
+            "library"
+        ];
+        let score = 0;
+
+        for (let i = 0; i < answers.length; i++) {
+            const userAnswer = document.getElementById(`answer${i + 1}`).value.toLowerCase();
+            if (userAnswer === answers[i]) {
+                score++;
+            }
+        }
+
+        const resultDiv = document.getElementById("result");
+        resultDiv.innerHTML = `You got ${score} out of ${answers.length} correct!`;
+    }
+</script>
+
 </body>
 </html>
